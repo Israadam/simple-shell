@@ -30,7 +30,7 @@ return (1);
 c = *p;
 *p = 0;
 ret = delete_node_at_index(&(parg->alias),
-get_node_index(parg->alias, node_starts_with(parg->alias, str, -1)));
+get_node_index(parg->alias,node_starts_with(parg->alias, str, -1)));
 *p = c;
 return (ret);
 }
