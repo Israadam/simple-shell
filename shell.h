@@ -112,11 +112,11 @@ typedef struct builtin
 } builtin_table;
 
 
-/* hsh.c */
-int hsh(info_t *, char **);
-int find_builtin(info_t *);
-void find_cmd(info_t *);
-void fork_cmd(info_t *);
+/* sh_loop.c */
+int shll(info_t *, char **);
+int check_builtin(info_t *);
+void find_command(info_t *);
+void fork_command(info_t *);
 
 /* my_path.c */
 int _cmd(info_t *, char *);
@@ -126,7 +126,7 @@ char *path_str(info_t *, char *, char *);
 /* loophsh.c */
 int loophsh(char **);
 
-/* err_string_functions.c */
+/* erc_string_functions.c */
 void _eputs(char *);
 int _eputchar(char);
 int _putfw(char c, int fd);
@@ -149,9 +149,9 @@ char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
 char *_strchr(char *, char);
 
-/* string_functions4.c */
-char **strtow(char *, char *);
-char **strtow2(char *, char);
+/* str4.c */
+char **strspt(char *, char *);
+char **strspt2(char *, char);
 
 /* my_memory.c */
 char *my_memset(char *, char, unsigned int);
@@ -174,24 +174,33 @@ int print_d(int, int);
 char *convert_number(long int, int, int);
 void remove_comments(char *);
 
-/* builtin_emulators.c */
-int _myexit(info_t *);
+/* builtin_emu.c */
+int _exitsh(info_t *);
+int _dirp(info_t *);
 int _mycd(info_t *);
-int _myhelp(info_t *);
 
-/* builtin_emulators2.c */
-int _myhistory(info_t *);
+/* builtin_emu2.c */
+int _histlst(info_t *);
+int unset_alias(info_t *, char *);
+int set_alias(info_t *, char *);
+int print_alias(list_t *);
 int _myalias(info_t *);
 
+
+
+
 /* getline.c module */
-ssize_t get_input(info_t *);
-int _getline(info_t *, char **, size_t *);
-void sigintHandler(int);
+ssize_t input_buffer(info_t *);
+int _getnxtline(info_t *, char **, size_t *);
+void sigintcntrl(int);
+ssize_t set_input(info_t *);
+
+
 
 /* info.c module */
-void clear_info(info_t *);
-void set_info(info_t *, char **);
-void free_info(info_t *, int);
+void int_info(info_t *);
+void str_info(info_t *, char **);
+void free_infor(info_t *, int);
 
 /* env.c module */
 char *_getenvva(info_t *, const char *);
@@ -206,18 +215,18 @@ int _rmenv(info_t *, char *);
 int _nwsenv(info_t *, char *, char *);
 
 /* file_io_functions.c */
-char *get_history_file(info_t *info);
-int write_history(info_t *info);
+char get_thehistory_file(info_t *info);
+int wrt_history(info_t *info);
 int read_history(info_t *info);
-int build_history_list(info_t *info, char *buf, int linecount);
-int renumber_history(info_t *info);
+int build_history_link(info_t *info, char *buf, int linecount);
+int renumber_hist(info_t *info);
 
 /* liststr.c module */
-list_t *add_node(list_t **, const char *, int);
-list_t *add_node_end(list_t **, const char *, int);
-size_t print_list_str(const list_t *);
-int delete_node_at_index(list_t **, unsigned int);
-void free_list(list_t **);
+list_t *add_node_list(list_t **, const char *, int);
+list_t *add_end_node(list_t **, const char *, int);
+size_t print_lst_str(const list_t *);
+int delete_node_at_given_index(list_t **, unsigned int);
+void free_node_list(list_t **);
 
 /* list2.c */
 size_t list_length(const list_t *);
