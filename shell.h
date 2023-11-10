@@ -129,8 +129,8 @@ int loophsh(char **);
 /* err_string_functions.c */
 void _eputs(char *);
 int _eputchar(char);
-int _putfd(char c, int fd);
-int _putsfd(char *str, int fd);
+int _putfw(char c, int fd);
+int _printsfd(char *str, int fd);
 
 /* str1.c */
 int _strlen(char *);
@@ -194,16 +194,16 @@ void set_info(info_t *, char **);
 void free_info(info_t *, int);
 
 /* env.c module */
-char *_getenv(info_t *, const char *);
-int _myenv(info_t *);
-int _mysetenv(info_t *);
-int _myunsetenv(info_t *);
+char *_getenvva(info_t *, const char *);
+int _prenv(info_t *);
+int _newsetenv(info_t *);
+int _unsetenv(info_t *);
 int populate_env_list(info_t *);
 
 /* env2.c module */
-char **get_environ(info_t *);
-int _unsetenv(info_t *, char *);
-int _setenv(info_t *, char *, char *);
+char **set_environ(info_t *);
+int _rmenv(info_t *, char *);
+int _nwsenv(info_t *, char *, char *);
 
 /* file_io_functions.c */
 char *get_history_file(info_t *info);
