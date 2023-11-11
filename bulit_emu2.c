@@ -29,8 +29,8 @@ if (!p)
 return (1);
 c = *p;
 *p = 0;
-ret = delete_node_at_index(&(parg->alias),
-get_node_index(parg->alias,node_starts_with(parg->alias, str, -1)));
+ret = delete_node_at_given_index(&(parg->alias),
+node_index(parg->alias,starts_with(parg->alias, str, -1)));
 *p = c;
 return (ret);
 }
@@ -52,7 +52,7 @@ if (!*++p)
 return (unset_alias(parg, str));
 
 unset_alias(parg, str);
-return (add_node_end(&(parg->alias), str, 0) == NULL);
+return (add_node_list(&(parg->alias), str, 0) == NULL);
 }
 
 /**
@@ -106,7 +106,7 @@ p = _strchr(parg->argv[i], '=');
 if (p)
 set_alias(parg, parg->argv[i]);
 else
-print_alias(node_starts_with(parg->alias, parg->argv[i], '='));
+print_alias(starts_with(parg->alias, parg->argv[i], '='));
 }
 return (0);
 }
