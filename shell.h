@@ -112,7 +112,7 @@ typedef struct builtin
 } builtin_table;
 
 
-/* sh_loop.c */
+/* shloop.c */
 int shll(info_t *, char **);
 int check_builtin(info_t *);
 void find_command(info_t *);
@@ -175,9 +175,9 @@ char *convert_number(long int, int, int);
 void remove_comments(char *);
 
 /* builtin_emu.c */
-int _exitsh(info_t *);
-int _dirp(info_t *);
-int _mycd(info_t *);
+int _shllexit(info_t *);
+int _cdir(info_t *);
+int _ccd(info_t *);
 
 /* builtin_emu2.c */
 int _histlst(info_t *);
@@ -203,14 +203,14 @@ void str_info(info_t *, char **);
 void free_infor(info_t *, int);
 
 /* env.c module */
-char *_getenv(info_t *, const char *);
+char *_setenv(info_t *, const char *);
 int _prenv(info_t *);
 int _newsetenv(info_t *);
 int _unsetenv(info_t *);
 int populate_env_list(info_t *);
 
 /* env2.c module */
-char **set_environ(info_t *);
+char **set_env(info_t *);
 int _rmenv(info_t *, char *);
 int _nwsenv(info_t *, char *, char *);
 
