@@ -8,7 +8,7 @@
  */
 int _prenv(info_t *parg)
 {
-print_list_str(parg->env);
+print_lst_str(parg->env);
 return (0);
 }
 

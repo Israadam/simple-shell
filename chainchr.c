@@ -80,7 +80,7 @@ char *p;
 
 for (i = 0; i < 10; i++)
 {
-node = node_starts_with(parg->alias, parg->argv[0], '=');
+node = starts_with(parg->alias, parg->argv[0], '=');
 if (!node)
 return (0);
 free(parg->argv[0]);
@@ -122,7 +122,7 @@ replace_string(&(parg->argv[i]),
 _strdup(convert_number(getpid(), 10, 0)));
 continue;
 }
-node = node_starts_with(parg->env, &parg->argv[i][1], '=');
+node = starts_with(parg->env, &parg->argv[i][1], '=');
 if (node)
 {
 replace_string(&(parg->argv[i]),

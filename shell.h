@@ -203,7 +203,7 @@ void str_info(info_t *, char **);
 void free_infor(info_t *, int);
 
 /* env.c module */
-char *_getenvva(info_t *, const char *);
+char *_getenv(info_t *, const char *);
 int _prenv(info_t *);
 int _newsetenv(info_t *);
 int _unsetenv(info_t *);

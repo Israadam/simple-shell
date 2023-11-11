@@ -39,6 +39,6 @@ int main(int ac, char **av)
 	}
 	populate_env_list(info);
 	read_history(info);
-	hsh(info, av);
+	shll(info, av);
 	return (EXIT_SUCCESS);
 }
