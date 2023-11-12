@@ -116,7 +116,7 @@ return (info->histcount = i);
 char *gets_history_file(info_t *info)
 {
 char *buf, *dir;
-dir = _getenv(info, "HOME=");
+dir = get_env(info, "HOME=");
 if (!dir)
 return (NULL);
 buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));

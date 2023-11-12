@@ -50,19 +50,19 @@ if (!str)
 return (0);
 while (*str)
 {
-i += _putfd(*str++, fd);
+i += _putsfd(*str++, fd);
 }
 return (i);
 }
 
 /**
- * _putfd - writes the character b to given fd
+ * _putsfd - writes the character b to given fd
  * @b: The character to print
  * @fd: The filedescriptor to write to
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _putfd(char b, int fd)
+int _putsfd(char b, int fd)
 {
 static int i;
 static char buf[WRITE_BUF_SIZE];

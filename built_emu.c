@@ -88,8 +88,8 @@ _eputs(info->argv[1]), _eputchar('\n');
 }
 else
 {
-_setenv(info, "OLDPWD", _getenv(info, "PWD="));
-_setenv(info, "PWD", getcwd(buffer, 1024));
+get_env(info, "OLDPWD", get_env(info, "PWD="));
+get_env(info, "PWD", getcwd(buffer, 1024));
 }
 return (0);
 }
