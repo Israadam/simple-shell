@@ -109,7 +109,7 @@ size_t printlist(const list_t *h)
 
 	while (h)
 	{
-		_puts(convert_number(h->num, 10, 0));
+		_puts(convertnum(h->num, 10, 0));
 		_putchar(' ');
 		_putchar(':');
 		_puts(h->str ? h->str : "(nil)");
