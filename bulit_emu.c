@@ -48,12 +48,12 @@ return (0);
 }
 
 /**
- * _mycd - changes the current directory of the process
+ * _cd - changes the current directory of the process
  * @parg: Structure containing potential arguments. Used to maintain
  * constant function prototype.
  *  Return: Always 0
  */
-int _mycd(info_t *parg)
+int _cd(info_t *parg)
 {
 char *s, *dir, buffer[1024];
 int chdir_ret;
@@ -65,8 +65,7 @@ if (!parg->argv[1])
 {
 dir = _getenv(parg, "HOME=");
 if (!dir)
-chdir_ret = /* TODO: what should this be? */
-chdir((dir = _getenv(parg, "PWD=")) ? dir : "/");
+chdir_ret = chdir((dir = _getenv(parg, "PWD=")) ? dir : "/");
 else
 chdir_ret = chdir(dir);
 }
@@ -79,8 +78,7 @@ _putchar('\n');
 return (1);
 }
 _puts(_getenv(parg, "OLDPWD=")), _putchar('\n');
-chdir_ret = /* TODO: what should this be? */
-chdir((dir = _getenv(parg, "OLDPWD=")) ? dir : "/");
+chdir_ret = chdir((dir = _getenv(parg, "OLDPWD=")) ? dir : "/");
 }
 else
 chdir_ret = chdir(parg->argv[1]);

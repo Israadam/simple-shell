@@ -29,7 +29,7 @@
 #define CONVERT_UNSIGNED	2
 
 /* 1 if using system getline() */
-#define USE_GETLINE 0
+#define USE_GETNXTLINE 0
 #define USE_STRTOK 0
 
 #define HIST_FILE	".simple_shell_history"
@@ -159,38 +159,38 @@ void str_free(char **);
 void *realloc_mem(void *, unsigned int, unsigned int);
 
 /* memory_functions2.c */
-int bfree(void **);
+int free_pointer(void **);
 
 /* more_functions.c */
-int interactive(info_t *);
-int is_delim(char, char *);
-int _isalpha(int);
-int _atoi(char *);
+int inter(info_t *);
+int delim(char, char *);
+int alpha_check(int);
+int is_atoi(char *);
 
 /* more_functions2.c */
-int _erratoi(char *);
-void print_error(info_t *, char *);
-int print_d(int, int);
-char *convert_number(long int, int, int);
-void remove_comments(char *);
+int str_to_int(char *);
+void _error(info_t *, char *);
+int base10(int, int);
+char *convertnum(long int, int, int);
+void rm_comments(char *);
 
 /* builtin_emu.c */
 int _exitsh(info_t *);
 int _dirp(info_t *);
-int _mycd(info_t *);
+int _cd(info_t *);
 
 /* builtin_emu2.c */
 int _histlst(info_t *);
-int unset_alias(info_t *, char *);
-int set_alias(info_t *, char *);
-int print_alias(list_t *);
-int _myalias(info_t *);
+int unsetalias(info_t *, char *);
+int setalias(info_t *, char *);
+int printalias(list_t *);
+int _my_alias(info_t *);
 
 
 
 
 /* getline.c module */
-ssize_t input_buffer(info_t *);
+ssize_t input_buff(info_t *);
 int _getnxtline(info_t *, char **, size_t *);
 void sigintcntrl(int);
 ssize_t set_input(info_t *);
@@ -198,16 +198,16 @@ ssize_t set_input(info_t *);
 
 
 /* info.c module */
-void int_info(info_t *);
+void init_info(info_t *);
 void str_info(info_t *, char **);
 void free_infor(info_t *, int);
 
 /* env.c module */
-char *_getenvva(info_t *, const char *);
+char *get_env(info_t *, const char *);
 int _prenv(info_t *);
 int _newsetenv(info_t *);
 int _unsetenv(info_t *);
-int populate_env_list(info_t *);
+int populate_env(info_t *);
 
 /* env2.c module */
 char **set_environ(info_t *);
@@ -221,23 +221,23 @@ int read_history(info_t *info);
 int build_history_link(info_t *info, char *buf, int linecount);
 int renumber_hist(info_t *info);
 
-/* liststr.c module */
-list_t *add_node_list(list_t **, const char *, int);
-list_t *add_end_node(list_t **, const char *, int);
-size_t print_lst_str(const list_t *);
-int delete_node_at_given_index(list_t **, unsigned int);
-void free_node_list(list_t **);
+/* list1.c */
+list_t *add_list(list_t **, const char *, int);
+list_t *end_list(list_t **, const char *, int);
+size_t print_str(const list_t *);
+int delete_node(list_t **, unsigned int);
+void free_node(list_t **);
 
 /* list2.c */
 size_t list_length(const list_t *);
 char **list_strings(list_t *);
-size_t printlist(const list_t *);
+size_t print_list(const list_t *);
 list_t *starts_with(list_t *, char *, char);
 ssize_t node_index(list_t *, list_t *);
 
 /* chain.c */
-int is_chain(info_t *, char *, size_t *);
-void check_chain(info_t *, char *, size_t *, size_t, size_t);
+int _chain(info_t *, char *, size_t *);
+void test_chain(info_t *, char *, size_t *, size_t, size_t);
 int replace_alias(info_t *);
 int replace_vars(info_t *);
 int replace_string(char **, char *);
