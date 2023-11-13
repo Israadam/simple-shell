@@ -175,15 +175,12 @@ char *convertnum(long int, int, int);
 void rm_comments(char *);
 
 /* builtin_emu.c */
-<<<<<<< HEAD
 int _exitsh(info_t *);
 int _dirp(info_t *);
 int _cd(info_t *);
-=======
 int _shllexit(info_t *);
 int _cdir(info_t *);
 int _ccd(info_t *);
->>>>>>> c05c887373f6021e6b6001093d9b9e183d1bf6f8
 
 /* builtin_emu2.c */
 int _histlst(info_t *);
@@ -208,18 +205,15 @@ void init_info(info_t *);
 void str_info(info_t *, char **);
 void free_infor(info_t *, int);
 
-/* env.c module */
-<<<<<<< HEAD
+/* envir1.c module */
 char *get_env(info_t *, const char *);
-=======
 char *_setenv(info_t *, const char *);
->>>>>>> c05c887373f6021e6b6001093d9b9e183d1bf6f8
 int _prenv(info_t *);
 int _newsetenv(info_t *);
 int _unsetenv(info_t *);
 int populate_env(info_t *);
 
-/* env2.c module */
+/* envir2.c module */
 char **set_env(info_t *);
 int _rmenv(info_t *, char *);
 int _nwsenv(info_t *, char *, char *);
