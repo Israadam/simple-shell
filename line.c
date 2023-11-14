@@ -28,7 +28,7 @@ return (-1);
 
 c = _strchr(buf + i, '\n');
 k = c ? 1 + (unsigned int)(c - buf) : len;
-new_p = _realloc(p, s, s ? s + k : k + 1);
+new_p = realloc(p, s, s ? s + k : k + 1);
 if (!new_p) /* MALLOC FAILURE! */
 return (p ? free(p), -1 : -1);
 
@@ -69,7 +69,7 @@ signal(SIGINT, sigintHandler);
 #if USE_GETLINE
 r = getline(buf, &len_p, stdin);
 #else
-r = _getline(info, buf, &len_p);
+r = getline(info, buf, &len_p);
 #endif
 if (r > 0)
 {
@@ -79,8 +79,8 @@ if ((*buf)[r - 1] == '\n')
 r--;
 }
 info->linecount_flag = 1;
-remove_comments(*buf);
-build_history_list(info, *buf, info->histcount++);
+rm_comments(*buf);
+build_history_link(info, *buf, info->histcount++);
 /* if (_strchr(*buf, ';')) is this a command chain? */
 {
 *len = r;
@@ -103,7 +103,7 @@ static size_t i, j, len;
 ssize_t r = 0;
 char **buf_p = &(info->arg), *p;
 _putchar(BUF_FLUSH);
-r = input_buf(info, &buf, &len);
+r = input_buff(info, &buf, &len);
 if (r == -1) /* EOF */
 return (-1);
 if (len)	/* we have commands left in the chain buffer */
@@ -114,7 +114,7 @@ p = buf + i; /* get pointer for return */
 check_chain(info, buf, &j, i, len);
 while (j < len) /* iterate to semicolon or end */
 {
-if (is_chain(info, buf, &j))
+if (_chain(info, buf, &j))
 break;
 j++;
 }
