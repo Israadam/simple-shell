@@ -193,10 +193,9 @@ int _my_alias(info_t *);
 
 
 /* line.c module */
-ssize_t input_buff(info_t *, char **, size_t *);
+ssize_t input_buff(info_t *);
 int _getnxtline(info_t *, char **, size_t *);
 void sigintcntrl(int);
-ssize_t set_input(info_t *info);
 ssize_t read_buf(info_t *, char *, size_t *);
 
 

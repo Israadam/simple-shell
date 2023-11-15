@@ -78,12 +78,12 @@ return (1);
 }
 
 /**
- * _mmalias - mimics the alias builtin (man alias)
+ * _my_alias - mimics the alias builtin (man alias)
  * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
  *  Return: Always 0
  */
-int _mmalias(info_t *info)
+int _my_alias(info_t *info)
 {
 int i = 0;
 char *p = NULL;

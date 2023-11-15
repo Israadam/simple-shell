@@ -47,7 +47,7 @@ int shll(info_t *info, char **av)
 
 	while (r != -1 && builtin_ret != -2)
 	{
-		clear_info(info);
+		str_info(info);
 		if (inter(info))
 			_puts("$ ");
 		_eputchar(BUF_FLUSH);
