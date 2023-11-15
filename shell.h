@@ -127,10 +127,10 @@ char *path_str(info_t *, char *, char *);
 int loophsh(char **);
 
 /* erc_string_functions.c */
-void _eputs(char *);
+void _eput(char *);
 int _eputchar(char);
-int _putfw(char c, int fd);
-int _printsfd(char *str, int fd);
+int _putfd(char c, int fd);
+int _putsfd(char *str, int fd);
 
 /* str1.c */
 int _strlen(char *);
@@ -193,10 +193,11 @@ int _my_alias(info_t *);
 
 
 /* line.c module */
-ssize_t input_buff(info_t *);
+ssize_t input_buff(info_t *, char **, size_t *);
 int _getnxtline(info_t *, char **, size_t *);
 void sigintcntrl(int);
-ssize_t set_input(info_t *);
+ssize_t set_input(info_t *info);
+ssize_t read_buf(info_t *, char *, size_t *);
 
 
 
@@ -207,7 +208,6 @@ void free_infor(info_t *, int);
 
 /* envir1.c module */
 char *get_env(info_t *, const char *);
-char *_setenv(info_t *, const char *);
 int _prenv(info_t *);
 int _newsetenv(info_t *);
 int _unsetenv(info_t *);
@@ -226,7 +226,7 @@ int build_history_link(info_t *info, char *buf, int linecount);
 int renumber_hist(info_t *info);
 
 /* list1.c */
-list_t *add_list(list_t **, const char *, int);
+list_t *add_list(list_t **head, const char *str, int num);
 list_t *end_list(list_t **, const char *, int);
 size_t print_str(const list_t *);
 int delete_node(list_t **, unsigned int);
