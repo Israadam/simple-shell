@@ -1,17 +1,11 @@
 #include "shell.h"
 
 /**
-<<<<<<< HEAD
  * init_info - initializes info_t struct
  * @stadd: struct address
  */
-void init_info(info_t *stadd)
-=======
- * clr_info - initializes info_t struct
- * @info: struct address
- */
+
 void clr_info(info_t *info)
->>>>>>> c05c887373f6021e6b6001093d9b9e183d1bf6f8
 {
 info->arg = NULL;
 info->argv = NULL;
@@ -55,30 +49,27 @@ _putchar(BUF_FLUSH);
  */
 void itz_info(info_t *info, char **av)
 {
-<<<<<<< HEAD
-	int i = 0;
-	stadd->fname = av[0];
+int i = 0;
+stadd->fname = av[0];
 	
-	if (stadd->arg)
-	{
-		stadd->argv = strspt(stadd->arg, " \t");
-		
-		if (!stadd->argv)
-		{
-			stadd->argv = malloc(sizeof(char *) * 2);
-			
-			if (stadd->argv)
-			{
-				stadd->argv[0] = _strdup(stadd->arg);
-				stadd->argv[1] = NULL;
-			}
-		}
-		for (i = 0; stadd->argv && stadd->argv[i]; i++)
-			;
-		stadd->argc = i;
-		replace_alias(stadd);
-		replace_vars(stadd);
-	}
+if (stadd->arg)
+{
+stadd->argv = strspt(stadd->arg, " \t");
+if (!stadd->argv)
+{
+stadd->argv = malloc(sizeof(char *) * 2);
+if (stadd->argv)
+{
+stadd->argv[0] = _strdup(stadd->arg);
+stadd->argv[1] = NULL;
+}
+}
+for (i = 0; stadd->argv && stadd->argv[i]; i++)
+;
+stadd->argc = i;
+replace_alias(stadd);
+replace_vars(stadd);
+}
 }
 
 /**
@@ -88,23 +79,20 @@ void itz_info(info_t *info, char **av)
  */
 void free_infor(info_t *stadd, int all)
 {
-	str_free(stadd->argv);
-	stadd->argv = NULL;
-	stadd->path = NULL;
-
-	if (all)
-	{
-		if (!stadd->cmd_buf)
-			free(stadd->arg);
-		if (stadd->env)
-			free_node(&(stadd->env));
-
-		if (stadd->history)
-			free_node(&(stadd->history));
-
-		if (stadd->alias)
-			free_node(&(stadd->alias));
-		str_free(stadd->environ);
+str_free(stadd->argv);
+stadd->argv = NULL;
+stadd->path = NULL;
+if (all)
+{
+if (!stadd->cmd_buf)
+free(stadd->arg);
+if (stadd->env)
+free_node(&(stadd->env));
+if (stadd->history)
+free_node(&(stadd->history));
+if (stadd->alias)
+free_node(&(stadd->alias));
+str_free(stadd->environ);
 		stadd->environ = NULL;
 		free_pointer((void **)stadd->cmd_buf);
 
