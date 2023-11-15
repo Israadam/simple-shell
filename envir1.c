@@ -1,14 +1,14 @@
 #include "shell.h"
 
 /**
- * _prntenv - prints the current environment
+ * _prenv - prints the current environment
  * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
  * Return: Always 0
  */
-int _prntenv(info_t *info)
+int _prenv(info_t *info)
 {
-	print_list(info->env);
+	print_str(info->env);
 	return (0);
 }
 

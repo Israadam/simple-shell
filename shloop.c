@@ -12,13 +12,13 @@ int check_builtin(info_t *info)
 {
 	int i, built_in_ret = -1;
 	builtin_table builtintbl[] = {
-		{"exit", _exit},
-		{"env", _rmenv},
-		{"help", _myhelp},
-		{"history", _myhistory},
-		{"setenv", _unsetenv},
-		{"unsetenv", _setenv},
-		{"cd", _mycd},
+		{"exit", _exitsh},
+		{"env", _prenv},
+		{"help", _currentdr},
+		{"history", _historylist},
+		{"setenv", _newsetenv},
+		{"unsetenv", _unsetenv},
+		{"cd", _ccd},
 		{"alias", _my_alias},
 		{NULL, NULL}
 	    
@@ -34,7 +34,7 @@ int check_builtin(info_t *info)
 	return (built_in_ret);
 }
 /**
- * hsh - main shell loop
+ * shll - main shell loop
  * @info: the parameter & return info struct
  * @av: the argument vector from main()
  *
@@ -47,7 +47,7 @@ int shll(info_t *info, char **av)
 
 	while (r != -1 && builtin_ret != -2)
 	{
-		str_info(info);
+		init_info(info);
 		if (inter(info))
 			_puts("$ ");
 		_eputchar(BUF_FLUSH);
