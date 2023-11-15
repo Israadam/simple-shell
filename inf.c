@@ -4,53 +4,66 @@
  * init_info - initializes info_t struct
  * @stadd: struct address
  */
+<<<<<<< HEAD
 
 void clr_info(info_t *info)
+=======
+void init_info(info_t *stadd)
+>>>>>>> 4d3309dd510eddde0f3f714a0f32324ed465486b
 {
-info->arg = NULL;
-info->argv = NULL;
-info->path = NULL;
-info->argc = 0;
+	stadd->arg = NULL;
+	stadd->argv = NULL;
+	stadd->path = NULL;
+	stadd->argc = 0;
 }
-
 
 /**
  * frees_info - frees info_t struct fields
  * @info: struct address
  * @all: true if freeing all fields
  */
-void frees_info(info_t *info, int all)
+void free_infor(info_t *info, int all)
 {
-ffree(info->argv);
-info->argv = NULL;
-info->path = NULL;
-if (all)
-{
-if (!info->cmd_buf)
-free(info->arg);
-if (info->env)
-free_list(&(info->env));
-if (info->history)
-free_list(&(info->history));
-if (info->alias)
-free_list(&(info->alias));
-ffree(info->environ);
-info->environ = NULL;
-bfree((void **)info->cmd_buf);
-if (info->readfd > 2)
-close(info->readfd);
-_putchar(BUF_FLUSH);
-}
+	free(info->argv);
+	info->argv = NULL;
+	info->path = NULL;
+	
+	if (all)
+	{
+		if (!info->cmd_buf)
+			free(info->arg);
+		
+		if (info->env)
+			free_node(&(info->env));
+		
+		if (info->history)
+			free_node(&(info->history));
+		
+		if (info->alias)
+			free_node(&(info->alias));
+		free(info->environ);
+		info->environ = NULL;
+		free_pointer((void **)info->cmd_buf);
+		
+		if (info->readfd > 2)
+			close(info->readfd);
+		_putchar(BUF_FLUSH);
+	}
 }
 /**
- * itz_info - initializes info_t struct
- * @info: struct address
+ * str_info - initializes info_t struct
+ * @stadd: struct address
  * @av: argument vector
  */
-void itz_info(info_t *info, char **av)
+void str_info(info_t *stadd, char **av)
 {
+<<<<<<< HEAD
 int i = 0;
 stadd->fname = av[0];
+=======
+	int i = 0;
+	stadd->fname = av[0];
+>>>>>>> 4d3309dd510eddde0f3f714a0f32324ed465486b
 	
 if (stadd->arg)
 {
@@ -71,6 +84,7 @@ replace_alias(stadd);
 replace_vars(stadd);
 }
 }
+<<<<<<< HEAD
 
 /**
  * free_infor - frees info_t struct fields
@@ -124,3 +138,5 @@ replace_vars(info);
 }
 
 >>>>>>> c05c887373f6021e6b6001093d9b9e183d1bf6f8
+=======
+>>>>>>> 4d3309dd510eddde0f3f714a0f32324ed465486b
