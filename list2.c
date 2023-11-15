@@ -43,7 +43,7 @@ size_t list_length(const list_t *h)
  *
  * Return: array of strings
  */
-char **list_strings(list_t *head)
+char **list_to_strings(list_t *head)
 {
 	size_t i = list_length(head), j;
 	list_t *node = head;
