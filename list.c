@@ -64,38 +64,38 @@ return (new_head);
  */
 list_t *end_list(list_t **head, const char *str, int num)
 {
-	list_t *new_node, *node;
+list_t *new_node, *node;
 
-	if (!head)
-		return (NULL);
+if (!head)
+return (NULL);
 
-	node = *head;
-	new_node = malloc(sizeof(list_t));
-	
-	if (!new_node)
-		return (NULL);
-	my_memset((void *)new_node, 0, sizeof(list_t));
-	new_node->num = num;
-	
-	if (str)
-	{
-		new_node->str = _strdup(str);
-		
-		if (!new_node->str)
-		{
-			free(new_node);
-			return (NULL);
-		}
-	}
-	if (node)
-	{
-		while (node->next)
-			node = node->next;
-		node->next = new_node;
-	}
-	else
-		*head = new_node;
-	return (new_node);
+node = *head;
+new_node = malloc(sizeof(list_t));
+
+if (!new_node)
+return (NULL);
+my_memset((void *)new_node, 0, sizeof(list_t));
+new_node->num = num;
+
+if (str)
+{
+new_node->str = _strdup(str);
+
+if (!new_node->str)
+{
+free(new_node);
+return (NULL);
+}
+}
+if (node)
+{
+while (node->next)
+node = node->next;
+node->next = new_node;
+}
+else
+*head = new_node;
+return (new_node);
 }
 
 /**
@@ -105,16 +105,16 @@ list_t *end_list(list_t **head, const char *str, int num)
  */
 size_t print_str(const list_t *l)
 {
-	size_t i = 0;
+size_t i = 0;
 
-	while (l)
-	{
-		_puts(l->str ? l->str : "(nil)");
-		_puts("\n");
-		l = l->next;
-		i++;
-	}
-	return (i);
+while (l)
+{
+_puts(l->str ? l->str : "(nil)");
+_puts("\n");
+l = l->next;
+i++;
+}
+return (i);
 }
 
 /**
@@ -125,33 +125,33 @@ size_t print_str(const list_t *l)
  */
 int delete_node(list_t **head, unsigned int index)
 {
-	list_t *node, *prev_node;
-	unsigned int i = 0;
-	
-	if (!head || !*head)
-		return (0);
-	if (!index)
-	{
-		node = *head;
-		*head = (*head)->next;
-		free(node->str);
-		free(node);
-		return (1);
-	}
-	node = *head;
-	
-	while (node)
-	{
-		if (i == index)
-		{
-			prev_node->next = node->next;
-			free(node->str);
-			free(node);
-			return (1);
-		}
-		i++;
-		prev_node = node;
-		node = node->next;
-	}
-	return (0);
+list_t *node, *prev_node;
+unsigned int i = 0;
+
+if (!head || !*head)
+return (0);
+if (!index)
+{
+node = *head;
+*head = (*head)->next;
+free(node->str);
+free(node);
+return (1);
+}
+node = *head;
+
+while (node)
+{
+if (i == index)
+{
+prev_node->next = node->next;
+free(node->str);
+free(node);
+return (1);
+}
+i++;
+prev_node = node;
+node = node->next;
+}
+return (0);
 }
