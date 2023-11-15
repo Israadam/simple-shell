@@ -127,7 +127,7 @@ char *path_str(info_t *, char *, char *);
 int loophsh(char **);
 
 /* erc_string_functions.c */
-void _eputs(char *);
+void _eput(char *);
 int _eputchar(char);
 int _putfd(char c, int fd);
 int _putsfd(char *str, int fd);
@@ -176,14 +176,17 @@ void rm_comments(char *);
 
 /* builtin_emu.c */
 int _exitsh(info_t *);
-int _currentdr(info_t *);
+int _dirp(info_t *);
+int _cd(info_t *);
+int _shllexit(info_t *);
+int _cdir(info_t *);
 int _ccd(info_t *);
 
 /* builtin_emu2.c */
-int _historylist(info_t *);
-int unset_alias(info_t *, char *);
-int set_alias(info_t *, char *);
-int print_alias(list_t *);
+int _histlst(info_t *);
+int unsetalias(info_t *, char *);
+int setalias(info_t *, char *);
+int printalias(list_t *);
 int _my_alias(info_t *);
 
 
@@ -194,7 +197,6 @@ ssize_t input_buff(info_t *);
 int _getnxtline(info_t *, char **, size_t *);
 void sigintcntrl(int);
 ssize_t read_buf(info_t *, char *, size_t *);
-ssize_t set_input(info_t *);
 
 
 

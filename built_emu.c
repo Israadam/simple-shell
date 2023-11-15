@@ -14,6 +14,7 @@ int _exitshll(info_t *info)
 	if (info->argv[1])  /* If there is an exit arguement */
 	{
 		exit = str_to_int(info->argv[1]);
+		
 		if (exit == -1)
 		{
 			info->status = 2;
