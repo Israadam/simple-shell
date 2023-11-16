@@ -71,10 +71,9 @@ if (last != i)
 build_history_link(info, buf + last, linecount++);
 free(buf);
 info->histcount = linecount;
-
 while (info->histcount-- >= HIST_MAX)
-delete_node(&(info->history), 0);
-renumber_hist(info);
+delete_node_at_index(&(info->history), 0);
+renumber_history(info);
 return (info->histcount);
 }
 

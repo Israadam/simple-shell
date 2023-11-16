@@ -99,5 +99,6 @@ else
 _nwsenv(info, "OLDPWD", get_env(info, "PWD="));
 _nwsenv(info, "PWD", getcwd(buffer, 1024));
 }
+
 return (0);
 }
