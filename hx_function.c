@@ -96,10 +96,10 @@ if (fd == -1)
 return (-1);
 for (node = info->history; node; node = node->next)
 {
-_putsfd(node->str, fd);
-_putfd('\n', fd);
+_puts(node->str, fd);
+_putfw('\n', fd);
 }
-_putfd(BUF_FLUSH, fd);
+_putfw(BUF_FLUSH, fd);
 close(fd);
 return (1);
 }
