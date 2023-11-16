@@ -34,7 +34,7 @@ return (0);
 
 while (*str)
 {
-i += _putfd(*str++, fd);
+i += _putsfd(*str++, fd);
 }
 return (i);
 }

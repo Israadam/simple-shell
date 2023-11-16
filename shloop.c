@@ -15,7 +15,7 @@ builtin_table builtintbl[] = {
 {"exit", _exitsh},
 {"env", _prenv},
 {"help", _currentdr},
-{"history", _historylist},
+{"history", _histlst},
 {"setenv", _newsetenv},
 {"unsetenv", _unsetenv},
 {"cd", _ccd},
